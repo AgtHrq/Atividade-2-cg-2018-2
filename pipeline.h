@@ -15,7 +15,7 @@
 
 
 
-void pipeline(){
+void pipeline(float angulo){
 
    //model  Objeto ---> Universo
    
@@ -28,12 +28,28 @@ void pipeline(){
     glm::mat4x4 mEscala = glm::mat4x4(1, 0, 0, 0,
                                       0, -1, 0, 0,
                                       0, 0, 1, 0,
-                                      0, 0, 0, 1);   
+                                      0, 0, 0, 1); 
 
-    glm::mat4x4 mRotacao = glm::mat4x4(cos(180.0), 0, -sin(180.0), 0,
+        float angX = 0.0;
+        float angY = angulo;
+        float angZ = 0.0;
+
+    glm::mat4x4 mRotacaoX = glm::mat4x4(1, 0, 0, 0,
+                                        0, cos(angX), sin(angX), 0,
+                                        0, -sin(angX), cos(angX), 0,
+                                        0, 0, 0, 1);
+
+    glm::mat4x4 mRotacaoY = glm::mat4x4(cos(angY), 0, -sin(angY), 0,
                                       0, 1, 0, 0,
-                                      sin(180.0), 0, cos(180.0), 0,
+                                      sin(angY), 0, cos(angY), 0,
                                       0, 0, 0, 1);
+
+    glm::mat4x4 mRotacaoZ = glm::mat4x4(cos(angZ), sin(angZ), 0, 0,
+                                        -sin(angZ), cos(angZ), 0, 0,
+                                        0, 0, 1, 0,
+                                        0, 0, 0, 1);
+
+    glm::mat4x4 mRotacao = mRotacaoX*mRotacaoY*mRotacaoZ;
 
     glm::mat4x4 mModel = mTranslacao * mEscala * mRotacao;                                 
 

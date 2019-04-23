@@ -15,7 +15,7 @@ typedef struct {  // unsigned determina apenas valores positivos
 color red = {255,0,0,255}; //Vermelho     intensidade de cada cor em cada componente do pixel
 color green = {0,255,0,255};// Verde
 color blue = {0,0,255,255};// Azul
-color black = {0,0,0,255};// Preto
+color black = {0,0,0,0};// Preto
 color white = {255,255,255,255};// Branco
 color orange = {205, 127, 50, 255};// Laranja
 color purple = {153, 50, 205, 255};// Roxo
@@ -41,6 +41,15 @@ void PutPixel(int x, int y, color cores){
 	else{
 	    return;
 	}	
+}
+void LimparTela(){
+	
+	for(int i=0; i< 512; i++){
+		for(int j = 0; j < 512; j++){
+			PutPixel(i, j, black);
+		}
+	}
+
 }
 
 color Interpolarizacao(double p, color corI, color corF){

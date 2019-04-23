@@ -2,12 +2,25 @@
 #include "pipeline.h"
 
 //-----------------------------------------------------------------------------
+float teste = 0.0;
+
 void MyGlDraw(void)
 {
+
+	
 	//*************************************************************************
 	// Chame aqui as funções do mygl.h
 	//********************************************************************
-	pipeline();
+	LimparTela();
+	
+	pipeline(teste);
+	
+	teste += 0.05;
+
+	if(teste > 360){
+		teste = 0.0;
+	}
+
 	
 	//TESTE DOS PIXELS
 	/*PutPixel(255,255, orange);
